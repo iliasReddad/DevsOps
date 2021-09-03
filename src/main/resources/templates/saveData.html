@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8" />
+<title>fiche Signalitique</title>
+</head>
+<body onload="testo()">
+	<div layout:fragment="content1">
+
+		<div style="margin-left: 12% ; margin-top: 2%" class="card  col-md-10">
+			<div class=" card-header">Etablir la fiche Signalitique </div>
+			
+			<div class=" card-body">
+				<form class="needs-validation" th:action="@{/saveAssure}" novalidate>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="nomComplet">Nom Complet</label>
+      <input type="text" class="form-control" name="nomComplet" id="nomComplet" placeholder="First name" required>
+      <div class="invalid-feedback">
+          Please entrer votre nom complet.
+        </div>
+        <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="DateNaissance">DateNaissance</label>
+      <input type="date" class="form-control" name="DateNaissance" id="DateNaissance" placeholder="Date Naissance" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+          Please entrer votre Date Naissance.
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="Ville">Ville</label>
+      <div class="input-group">
+        
+        <input type="text" class="form-control" id="Ville" name="Ville" placeholder="Ville" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please select a ville.
+        </div>
+        <div class="valid-feedback">
+        Looks good!
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="NaturePiece">Nature de la Piece</label>
+<select class="browser-default custom-select" id="NaturePiece" name="NaturePiece">
+  <option selected>CNIE</option>
+  <option value="1">Passport</option>
+</select>      
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="ReferencePiece">ReferencePiece</label>
+      <input type="text" class="form-control" name="ReferencePiece" id="ReferencePiece" placeholder="AE15512" required>
+      <div class="invalid-feedback">
+        Please provide a valid ReferencePiece.
+      </div>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="SituationFamiliale">SituationFamiliale</label>
+<select  class="browser-default custom-select"  name="SituationFamiliale" id="SituationFamiliale">
+  <option value="Veufe">Veufe(ve)</option>
+  <option value="Celibataire">Celibataire</option>
+  <option value="Divorcé">Divorcé</option>
+      <option  value="Marié">Marié(e)</option>
+  
+  
+</select>     
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="Telephone">Telephone</label>
+      <input type="text" class="form-control" name="Telephone" id="Telephone" placeholder="Telephone" required>
+      <div class="invalid-feedback">
+        Please provide a valid Telephone.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="Profession">Profession</label>
+      <input type="text" class="form-control" name="Profession" id="Profession" placeholder="Profession" required>
+      <div class="invalid-feedback">
+        Please provide a valid Profession.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="email">email</label>
+      <input type="text" class="form-control" name="email" id="email" placeholder="email@gmail.com" required>
+      <div class="invalid-feedback">
+        Please provide a valid email.
+      </div>
+    </div>
+    
+  </div>
+   <div class="form-row">
+						<div class="col-md-6 mb-3">
+							<label for="LienParente">LienParente</label> 
+							<select
+							
+							
+								class="browser-default custom-select" id="LienParente"
+								name="LienParente">
+								<option value="Lui meme" >Lui meme</option>
+								<option value="autre">Autre</option>
+								</select>
+							
+						</div>
+						<div class="col-md-3 mb-3">
+							<label for="sexe">sexe</label> <select
+								class="browser-default custom-select" id="sexe"
+								name="sexe">
+								<option selected>M</option>
+								<option value="F">F</option>
+
+							</select>
+						</div>
+						<div class="col-md-3 mb-3">
+      <label for="codePostal">Code Postal</label>
+      <input type="text" class="form-control" name="codePostal" id="codePostal" placeholder="11100" required>
+      <div class="invalid-feedback">
+        Please provide a valid Profession.
+      </div>
+    </div>
+        <div class="col-md-3 mb-3">
+      <label for="adresse">Adresse</label>
+      <input type="text" class="form-control" name="adresse" id="adresse" placeholder="Rue kenitra ...." required>
+      <div class="invalid-feedback">
+        Please provide a valid Adresse.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Valider</button>
+</form>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+function testo(){
+	var test = "[[${check}]]";
+
+	console.log(test);
+	if(test ==  "null"){         
+		 document.getElementById("LienParente").options[0].remove() ;
+			console.log(1);
+ 
+	    }else{          
+			 document.getElementById("LienParente").options[0].disabled = false;
+	    }    
+}
+</script>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

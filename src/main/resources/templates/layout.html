@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+
+<head>
+ <style type="text/css">
+
+
+
+</style> 
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../static/Css/bootstrap.min.css"  th:href="@{Css/bootstrap.min.css}">
+    <link th:rel="stylesheet"  href="../static/assets/jquery-steps/jquery.steps.css"   th:href="@{/assets/jquery-steps/jquery.steps.css} "/>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+ 
+
+<title>Page Layout</title>
+
+</head>
+<body>
+
+<nav  class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="#" class="navbar-brand">
+        <img src="./Logo-credit-agricol-maroc.jpg" height="28" alt="CoolBrand">
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div style="margin-top: 1px" class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a  href="/operation" class="nav-item nav-link active">Fiche Signalitique</a>
+            <a href="/test" class="nav-item nav-link">Souscription</a>
+            <a href="/prest" class="nav-item nav-link">Prestation</a>
+        </div>
+<!--         <div class="navbar-nav ml-auto"> -->
+<!--             <a href="#" class="nav-item nav-link">Login</a> -->
+<!--         </div> -->
+    </div>
+</nav>
+
+
+<section class="container" layout:fragment="content1">
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

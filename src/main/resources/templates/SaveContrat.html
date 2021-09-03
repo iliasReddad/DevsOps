@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8" />
+<title>Save Contrat</title>
+</head>
+<body>
+	<div layout:fragment="content1">
+</a>
+
+		<div style="margin-left: 12%; margin-top: 2%" class="card  col-md-10">
+			<div  th:text=" 'contrat pour Assure N° = ' + ${codeAssure} " class=" card-header">Etablir le contrat</div>
+
+			<div class=" card-body">
+				<form  th:action="@{/saveContrat}" novalidate>
+					<div class="form-row">
+						<div class="col-md-6 mb-3">
+							<label  for="Cotisation">Cotisation</label> <input    
+								class="form-control , validate" type="number" th:min="1" name="Cotisation" id="Cotisation"
+								placeholder="money" required>
+<!-- 							<span th:if="${#fields.hasErrors('montant')}" >Cotisation error</span> -->
+						</div>
+
+					</div>
+					<div class="form-row">
+						<div  class="col-md-6 mb-3">
+							<label  for="Periodicite">Periodicite</label> <select  
+								class="browser-default custom-select , validate" id="Periodicite"
+								name="Periodicite">
+								<option selected>Mensuelle</option>
+								<option value="Trimestrielle">Trimestrielle</option>
+								<option value="Semestrielle">Semestrielle</option>
+								<option value="Annuelle">Annuelle</option>
+							</select>
+						</div>
+
+
+					</div>
+
+					<div class="form-row">
+						<div class="col-md-6 mb-3">
+							<label for="Benificiare">Benificiare</label>
+							 <select
+							 	id="benifSelect"
+								onchange="onchangeSelect();"
+								class="browser-default custom-select"
+								name="Benificiare">
+								<option value="ayant droits" selected>Les ayant
+									droits</option>
+								<option value="autres">Autre</option>
+							</select>
+
+						</div>
+
+
+					</div>
+					<div id="benificaireDiv"
+						style="margin-left: 0%; margin-top: 2%; display: none;"
+						class="card  col-md-12">
+						
+						<div style="color: green;" class=" card-header">Ajouter des
+							benificiares</div>
+
+						<div class=" card-body">
+					
+							<div class="form-row">
+
+								<div class="col-md-4 mb-3">
+									<label  for="Nom">Nom</label> <input type="text"
+										class="form-control" name="Nom" id="Nom" placeholder="Nom"
+										required>
+<!-- 									<div class="invalid-feedback">Please entrer le Nom .</div> -->
+									<div class="valid-feedback">Looks good!</div>
+								</div>
+								<div class="col-md-4 mb-3">
+									<label for="Prenom">Prenom</label> <input type="text"
+										class="form-control" name="Prenom" id="Prenom"
+										placeholder="Prenom" required>
+<!-- 									<div class="invalid-feedback">Please entrer le Prenom .</div>
+ -->									<div class="valid-feedback">Looks good!</div>
+								</div>
+								<div class="col-md-4 mb-3">
+									<label for="Pourcentage">Pourcentage</label> <input type="number"
+										class="form-control" name="Pourcentage" id="Pourcentage"
+										placeholder="%" required>
+<!-- 									<div class="invalid-feedback">Please entrer le -->
+<!-- 										Pourcentage .</div> -->
+									<div class="valid-feedback">Looks good!</div>
+								</div>  
+<!-- 								<a  onclick="this.href='saveBenif?Nom='+document.getElementById('Nom').value">Save </a> -->
+								
+<!-- 								<a th:href="@{/saveBenifi}"> <button style="background-color: red" class="btn btn-primary" -->
+<!-- 								type="button"	>Enregistrer Benificaire</button> </a>  -->
+							</div>
+						</div>
+					</div>
+					<div style="margin-top: 2%" class="form-group">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value=""
+								id="invalidCheck" required> <label
+								class="form-check-label" for="invalidCheck"> Agree to
+								terms and conditions </label>
+							<div class="invalid-feedback">You must agree before
+								submitting.</div>
+						</div>
+					</div>
+					
+<!-- 					 <a th:href="@{/saveBenifi}" type="submit"><i class="fas fa-file"></i></a> -->
+				  <button class="btn btn-primary" onclick="validate()" type="submit">Valider</button>
+				</form>
+					<a th:href="@{/test}"><button style="font-size:24px ; margin-top: 10px ; margin-left:82%">Home <i class="fa fa-hand-o-left"></i></button></a>
+				
+				<script>
+// disabling form submissions if there are invalid fields
+function validate(){    
+
+  // get all the inputs that have the validate class in it
+  // this requires the input to have a class name valled validate
+  var validateElements = document.getElementsByClassName("validate");
+
+
+  // Get all the inputs 
+  // This code is required because the output 
+  // from 'document.getElementsByClassName' is not fit to the current needs
+
+  // console.log("validateElements",validateElements); 
+  // Uncomment the previous line to see the output of the 
+  // 'document.getElementsByClassName' function
+
+  var inputs = Array.prototype.filter.call(validateElements,
+  function(element){
+    return element.nodeName === 'INPUT';
+  });
+
+  // Loop through the inputs to be validated
+
+  for(var i=0; i < inputs.length; i ++ ){
+    var input = inputs[i];
+    if(input.value.length == 0){
+        // generic placeholder
+        input.placeholder = "kindly enter value";
+        // error class
+        input.classList.add("err");
+        // The following is required if you want the validation to stop
+        // once an invalid input is found
+        // focus on the input [ optional ]
+        input.focus();
+        event.preventDefault();
+      event.stopPropagation();
+
+        // break the loop [ optional ]
+        //break;
+    }
+  }    
+}
+
+function onchangeSelect(){
+	
+	var selectedIndex = document.getElementById("benifSelect").selectedIndex;
+	if(selectedIndex == 1)
+		document.getElementById('benificaireDiv').style.display='block';
+		else
+			document.getElementById('benificaireDiv').style.display='none';
+			
+}
+
+
+</script>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

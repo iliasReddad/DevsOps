@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8" />
+<title>Contrat</title>
+<style>
+div {
+	margin-top: 10px;
+}
+
+body {
+	font-family: 'BlinkMacSystemFont';
+}
+</style>
+</head>
+<body>
+
+	<div layout:fragment="content1">
+					<a th:href="@{/test}"><button style="font-size:24px ; margin-top: 10px ; margin-left:42%">HOME <i class="fa fa-hand-o-left"></i></button></a>
+		<div class="row">
+
+			<div style="margin-left: 4%; margin-top: 2%" class="card col-md-5"
+				th:if="${compte}">
+				<div class="card-header">Informations sur le compte</div>
+				<div class="card-body">
+					<div class="form-control">
+						<label style="color: blue">Numero de compte :</label> <label
+							th:text="${compte.numCompte}"></label> <label> </label> <label>
+						</label> <label style="color: blue">Nom Agence :</label> <label
+							th:text="${compte.client.agence}"></label>
+					</div>
+
+					<div class="form-control">
+						<label style="color: blue">nom du client :</label> <label
+							th:text="${compte.client.nom}"></label>
+					</div>
+					<div class="form-control">
+
+						<label style="color: blue"> RIB : </label> <label
+							th:text="${compte.RIB}"></label>
+					</div>
+					<div class="form-control">
+						<label style="color: blue"> solde : </label> <label
+							th:text="${compte.solde}"></label>
+					</div>
+					<div class="form-control">
+
+						<label style="color: blue"> Date Creation: </label> <label
+							th:text="${compte.dateOuverture}"></label>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div style="margin-left: 4%; margin-top: 2%" class="card col-md-6"
+				th:if="${assure}">
+				<div class="card-header">Informations sur l'assure</div>
+				<div class="card-body">
+					<div class="form-control">
+						<label style="color: blue">Code de Assure :</label> <label
+							th:text="${assure.codeAssure}"></label> <label> </label> <label>
+						</label> <label style="color: blue">Nom Complet :</label> <label
+							th:text="${assure.nomComplet_a}"></label>
+					</div>
+
+					<div class="form-control">
+						<label style="color: blue">Reference piece :</label> <label
+							th:text="${assure.ReferencePiece_a}"></label>
+					</div>
+					<div class="form-control">
+
+						<label style="color: blue"> Lien parente : </label> <label
+							th:text="${assure.LienParente_a}"></label>
+					</div>
+					<div class="form-control">
+						<label style="color: blue"> Profession : </label> <label
+							th:text="${assure.Profession_a}"></label>
+					</div>
+					<div class="form-control">
+
+						<label style="color: blue"> Adresse: </label> <label
+							th:text="${assure.adresse_a}"></label>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+		</div>
+		<div class="row">
+		
+			<div  style="margin-top: 2%" class="card  text-center col-md-12"   >
+				<div class=" card-header">Liste des contrat </div>
+				<!-- <div class="panel panel-body" th:if="${assure == null}">
+					<label th:text="pas de fiche signalitique"></label>
+				</div> -->
+
+
+				<div  class="card card_body" >
+					<table th:if="${contrat}"  class="table table-striped table-hover">
+						<tr>
+							<th> Pdf Contrat</th>
+							<th>Etat</th>
+							<th>Date Creation</th>
+							<th>Cotisation</th>
+							<th>Periodicite</th>
+							<th>Numero Police </th>
+							<th>MontantAccumulé </th>
+							<th>Evenements </th>
+							<th>Benificiares </th>
+							
+						      
+						</tr>
+						<tr th:each="objet:${contrat}">
+							<td> <a th:href="@{/printfpdf(id=${objet.idContrat},id2=${assure.codeAssure})}"><i class="fas fa-file"></i></a> </td> 
+							<td  th:text="${objet.etat}"></td>
+							<td th:text="${objet.dateCreation}"></td>
+							<td th:text="${objet.montant}"></td>
+							<td th:text="${objet.periodicite}"></td>
+							<td th:text="${objet.NumeroPolice}"></td>
+							<td th:text="${objet.MontantAccumule}"></td>		
+							<td> <a th:href="@{/test5(id=${objet.idContrat} , numP=${objet.NumeroPolice} )}"><i class="fas fa-file"></i></a> </td> 
+							<td> <a th:href="@{/test6(id=${objet.idContrat})}"><i class="fas fa-file"></i></a> </td> 
+							
+
+						</tr>
+
+
+
+					</table>
+
+
+
+
+				</div>
+			</div>
+		 
+		
+		
+		</div>
+
+	</div>
+
+</body>
+</html>

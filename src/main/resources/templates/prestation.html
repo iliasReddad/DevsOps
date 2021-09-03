@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8" />
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+
+
+<style>
+div {
+	margin-top: 10px;
+}
+
+body {
+	font-family: 'BlinkMacSystemFont';
+}
+
+@import
+	url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap")
+	;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+}
+
+.btn {
+	display: inline-block;
+	background: #000;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	margin: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 15px;
+	font-family: inherit;
+}
+
+.btn:focus {
+	outline: none;
+}
+
+.btn:active {
+	transform: scale(0.98);
+}
+
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+.form-control {
+	margin: 20px 0;
+}
+
+.form-control label {
+	display: block;
+}
+
+.form-control input {
+	width: 100%;
+	height: 50px;
+	margin: 10px;
+	padding: 3px 7px;
+	font-size: 17px;
+}
+
+.form-control select {
+	width: 100%;
+	height: 50px;
+	margin: 10px;
+	padding: 3px 7px;
+	font-size: 17px;
+}
+
+.form-control-check {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.form-control-check label {
+	flex: 1;
+}
+
+.form-control-check input {
+	flex: 2;
+	height: 35px;
+}
+
+.form-control-check select {
+	flex: 2;
+	height: 35px;
+}
+</style>
+</head>
+<body onload="getType()">
+
+	<div layout:fragment="content1">
+		<div class="row">
+
+			<div style="margin-top: 2%" class="card panel-primary col-md-5">
+				<div class="card-header">Demande de prestation</div>
+
+				<div class="card-body">
+					<form class="needs-validation" th:action="@{/demandePrestation}"
+						method="get">
+
+
+						<div class="form-control , form-control-check">
+
+							<label> N° Compte : </label> <input type="text" id="codeCompte"
+								name="codeCompte" th:value="${codeCompte}" />
+
+						</div>
+						<!-- 							<button id="btn"  type="submit" class="btn btn-block">chercher</button> -->
+						<div class="form-control , form-control-check">
+							<label for="NPolice">N° Police</label> <select id="NPolice"
+								name="NPolice" th:value="${NPolice}"></select>
+						</div>
+						<button id="btn" type="submit" class="btn btn-block">Demander
+							Prestation</button>
+
+					</form>
+					<script type="text/javascript" th:inline="javascript">
+
+			function getType() {
+				
+
+				var items = [];
+
+				/*[# th:each="n : ${contrat}"]*/
+
+				items.push("[(${n.NumeroPolice})]");
+				console.log("[(${n.NumeroPolice})]");
+
+				/*[/]*/
+
+				
+				  var x = document.getElementById("codeCompte").value;
+				  var str = ""
+				  for (var item of items) {
+				    str += "<option>" + item + "</option>"
+				  }
+				  document.getElementById("NPolice").innerHTML = str;
+				}
+			</script>
+				</div>
+				<div class="card-footer text-muted"></div>
+			</div>
+
+			<div style="margin-left: 6%; margin-top: 2%; height: 50%"
+				class="card col-md-6" th:if="${compte}">
+				<div class="card-header">Informations sur le compte</div>
+				<div class="card-body">
+					<div class="form-control">
+						<label style="color: blue">Numero de compte :</label> <label
+							th:text="${compte.numCompte}"></label> <label> </label> <label
+							style="color: blue"> Date Creation: </label> <label
+							th:text="${compte.dateOuverture}"></label> <label
+							style="color: blue"> RIB : </label> <label
+							th:text="${compte.RIB}"></label>
+					</div>
+
+					<div class="form-control">
+						<label style="color: blue">nom du client :</label> <label
+							th:text="${compte.client.nom}"></label>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="card col-md-8" th:if="${succes}">
+				<div style="background-color: green" class="card-header">Sucess</div>
+				<div class="card-body">
+					<label> Prestation Ajouter avec succes</label>
+				</div>
+			</div>
+					</div>
+					
+					<div class="row">
+			<div class="card col-md-8" th:if="${error}">
+				<div style="background-color: red" class="card-header">Error</div>
+				<div class="card-body">
+					<label> Prestation deja Ajouter </label>
+				</div>
+			</div>
+					</div>
+
+
+			<div class="row">
+				<div th:if="${contratL}" style="margin-top: 2%"
+					class="card panel-primary col-md-12">
+					<div style="text-align: center" class="card-header">Demander
+						prestation</div>
+					<div class="card card_body">
+						<table style="align-content: center" th:if="${contratL}"
+							class="table table-striped table-hover">
+							<tr style="text-align: center">
+								<th>Prestation</th>
+								<th>Date Creation</th>
+								<th>Cotisation</th>
+								<th>Periodicite</th>
+								<th>Numero Police</th>
+								<th>Etat</th>
+
+							</tr>
+							<tr style="text-align: center" class="tr">
+								<td>
+									<button type="button" class="btn btn-success btn-sm"
+										data-toggle="modal" data-target="#purchaseModal">Form</button>
+								</td>
+								<td th:text="${contratL.dateCreation}"></td>
+								<td th:text="${contratL.montant}"></td>
+								<td th:text="${contratL.periodicite}"></td>
+								<td th:text="${contratL.NumeroPolice}"></td>
+							    <td th:text="${contratL.etat}"></td>
+							</tr>
+
+						</table>
+						<div class="modal fade" id="purchaseModal" tabindex="-1"
+							role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="purchaseLabel">Prestation
+											Form</h4>
+									</div>
+									<form th:action="@{/savePrestation}" novalidate>
+
+										<div class="modal-body">
+
+											<div class="form-control , form-control-check">
+
+												<label> N° Police : </label> <input type="text" id="Police"
+													name="Police" th:value="${contratL.NumeroPolice}" />
+
+											</div>
+
+											<div class="form-control , form-control-check ">
+
+												<label > Somme : </label> <input class="validate" type="number" id="Somme"
+													name="Somme"  th:value="${contratL.MontantAccumule}" th:max="${contratL.MontantAccumule}"  />
+
+											</div>
+
+								
+											<div class="form-control , form-control-check">
+												<label for="TYPE">TYPE</label> <select onclick="onLoadBody()" id="TYPE"
+													class="browser-default custom-select  " name="TYPE">
+													<option value="rachat total" selected>rachat total</option>
+													<option value="rachat Partiel">rachat Partiel</option>
+													<option value="liquidation">liquidation</option>
+													<option value="Avance">Avance</option>
+
+												</select>
+
+											</div>
+
+<!-- 										<div style="margin-top: 2%" class="form-group"> -->
+<!-- 											<div class="form-check"> -->
+<!-- 												<input class="form-check-input validate " type="checkbox" -->
+<!-- 													value="" id="invalidCheck" required> <label -->
+<!-- 													class="form-check-label" for="invalidCheck"> Agree -->
+<!-- 													to terms and conditions </label> -->
+<!-- 												<div class="invalid-feedback">You must agree before -->
+<!-- 													submitting.</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+
+
+
+
+
+									</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">Close</button>
+											<button type="submit" id="valider" onclick="validate()" class="btn btn-primary">Valider</button>
+
+										</div>
+										
+									</form>
+									
+									<script type="text/javascript">
+									
+									 function onLoadBody() {
+										 var selectedIndex = document.getElementById("TYPE").selectedIndex;
+											if(selectedIndex == 2 || selectedIndex == 0 ) {
+										    document.getElementById('Somme').readOnly = true;
+											}
+											else{ document.getElementById('Somme').readOnly = false;
+}
+										  } 
+									function validate(){    
+
+										  // get all the inputs that have the validate class in it
+										  // this requires the input to have a class name valled validate
+										  var validateElements = document.getElementsByClassName("validate");
+
+
+										  // Get all the inputs 
+										  // This code is required because the output 
+										  // from 'document.getElementsByClassName' is not fit to the current needs
+
+										  // console.log("validateElements",validateElements); 
+										  // Uncomment the previous line to see the output of the 
+										  // 'document.getElementsByClassName' function
+
+										  var inputs = Array.prototype.filter.call(validateElements,
+										  function(element){
+										    return element.nodeName === 'INPUT';
+										  });
+
+										  // Loop through the inputs to be validated
+
+										  for(var i=0; i < inputs.length; i ++ ){
+										    var input = inputs[i];
+										    if(input.value.length == 0){
+										        // generic placeholder
+										        input.placeholder = "kindly enter value";
+										        // error class
+										        input.classList.add("err");
+										        // The following is required if you want the validation to stop
+										        // once an invalid input is found
+										        // focus on the input [ optional ]
+										        input.focus();
+										        event.preventDefault();
+										      event.stopPropagation();
+
+										        // break the loop [ optional ]
+										        //break;
+										    }
+										  }    
+										}
+</script>
+								</div>
+
+							</div>
+						</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>

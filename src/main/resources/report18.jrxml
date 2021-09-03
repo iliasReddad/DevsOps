@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report18" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="af0d6763-5a97-42fc-818b-41964dd3db93">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter2.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<subDataset name="Dataset1" uuid="1908f7d6-9f93-4314-b468-d5413f73cfa5">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter2.xml"/>
+		<queryString language="SQL">
+			<![CDATA[select NOM , POURCENTAGE, PRENOM from BENEFICIAIRE
+WHERE CODE_CONTRAT = ""  ;]]>
+		</queryString>
+	</subDataset>
+	<subDataset name="Empty Dataset1" uuid="21efb521-6ed6-4ea1-a6dc-d85c64733ae0"/>
+	<subDataset name="Dataset2" uuid="41ec5fdd-04c5-41b1-8e77-6867fbe9f338">
+		<property name="com.jaspersoft.studio.data.sql.tables">
+			<![CDATA[IkJFTkVGSUNJQUlSRSIgLDE1LDE1LDM5NDgxMmMzLTU4ZWEtNGU2ZS04YjViLTNmYzBlZGY1MDVj
+NTs=]]>
+		</property>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter2.xml"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT NOM,
+	PRENOM,
+	POURCENTAGE
+FROM "BENEFICIAIRE"]]>
+		</queryString>
+	</subDataset>
+	<parameter name="id" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT *
+FROM "ASSURE"
+	FULL JOIN "COMPTE_A" ON 
+	 "ASSURE"."CD_COMPTE" = "COMPTE_A"."CODE_COMPTE" 
+	FULL JOIN "CLIENT_A" ON 
+	  "COMPTE_A"."CODE_CLIENT" =   "CLIENT_A"."IDENTIFIANT_CLIENT" 
+	FULL JOIN "CONTRAT" ON 
+	 "ASSURE"."CODE_ASSURE" = "CONTRAT"."CD_ASSURE" 
+	FULL JOIN "BENIFICAIRE" ON 
+	 "BENIFICAIRE"."CODE_CONTRAT" = $P{id} 
+WHERE 
+	 "CONTRAT"."ID_CONTRAT" = $P{id}]]>
+	</queryString>
+	<field name="CODE_ASSURE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CODE_ASSURE"/>
+		<property name="com.jaspersoft.studio.field.label" value="CODE_ASSURE"/>
+	</field>
+	<field name="DATE_NAISSANCE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DATE_NAISSANCE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="DATE_NAISSANCE_A"/>
+	</field>
+	<field name="LIEN_PARENTE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LIEN_PARENTE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="LIEN_PARENTE_A"/>
+	</field>
+	<field name="NATURE_PIECE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NATURE_PIECE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="NATURE_PIECE_A"/>
+	</field>
+	<field name="PROFESSION_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PROFESSION_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="PROFESSION_A"/>
+	</field>
+	<field name="REFERENCE_PIECE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="REFERENCE_PIECE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="REFERENCE_PIECE_A"/>
+	</field>
+	<field name="SITUATION_FAMILIALE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SITUATION_FAMILIALE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="SITUATION_FAMILIALE_A"/>
+	</field>
+	<field name="TELEPHONE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TELEPHONE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="TELEPHONE_A"/>
+	</field>
+	<field name="VILLE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VILLE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="VILLE_A"/>
+	</field>
+	<field name="ADRESSE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ADRESSE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="ADRESSE_A"/>
+	</field>
+	<field name="CODE_POSTAL_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CODE_POSTAL_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="CODE_POSTAL_A"/>
+	</field>
+	<field name="EMAIL_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="EMAIL_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="EMAIL_A"/>
+	</field>
+	<field name="NOM_COMPLET_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOM_COMPLET_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOM_COMPLET_A"/>
+	</field>
+	<field name="SEXE_A" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SEXE_A"/>
+		<property name="com.jaspersoft.studio.field.label" value="SEXE_A"/>
+	</field>
+	<field name="CD_COMPTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CD_COMPTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="CD_COMPTE"/>
+	</field>
+	<field name="CODE_COMPTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CODE_COMPTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="CODE_COMPTE"/>
+	</field>
+	<field name="RIB" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="RIB"/>
+		<property name="com.jaspersoft.studio.field.label" value="RIB"/>
+	</field>
+	<field name="DATE_OUVERTURE" class="oracle.sql.TIMESTAMP">
+		<property name="com.jaspersoft.studio.field.name" value="DATE_OUVERTURE"/>
+		<property name="com.jaspersoft.studio.field.label" value="DATE_OUVERTURE"/>
+	</field>
+	<field name="NUM_COMPTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NUM_COMPTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NUM_COMPTE"/>
+	</field>
+	<field name="SOLDE" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="SOLDE"/>
+		<property name="com.jaspersoft.studio.field.label" value="SOLDE"/>
+	</field>
+	<field name="STATUT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="STATUT"/>
+		<property name="com.jaspersoft.studio.field.label" value="STATUT"/>
+	</field>
+	<field name="TYPE_COMPTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TYPE_COMPTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="TYPE_COMPTE"/>
+	</field>
+	<field name="CODE_CLIENT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CODE_CLIENT"/>
+		<property name="com.jaspersoft.studio.field.label" value="CODE_CLIENT"/>
+	</field>
+	<field name="IDENTIFIANT_CLIENT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IDENTIFIANT_CLIENT"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDENTIFIANT_CLIENT"/>
+	</field>
+	<field name="AGENCE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="AGENCE"/>
+		<property name="com.jaspersoft.studio.field.label" value="AGENCE"/>
+	</field>
+	<field name="NOM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOM"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOM"/>
+	</field>
+	<field name="ID_CONTRAT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="ID_CONTRAT"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_CONTRAT"/>
+	</field>
+	<field name="NUMERO_POLICE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NUMERO_POLICE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NUMERO_POLICE"/>
+	</field>
+	<field name="DATE_CREATION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DATE_CREATION"/>
+		<property name="com.jaspersoft.studio.field.label" value="DATE_CREATION"/>
+	</field>
+	<field name="DATE_RESILIATION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DATE_RESILIATION"/>
+		<property name="com.jaspersoft.studio.field.label" value="DATE_RESILIATION"/>
+	</field>
+	<field name="DUREE_CONTRAT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="DUREE_CONTRAT"/>
+		<property name="com.jaspersoft.studio.field.label" value="DUREE_CONTRAT"/>
+	</field>
+	<field name="ETAT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ETAT"/>
+		<property name="com.jaspersoft.studio.field.label" value="ETAT"/>
+	</field>
+	<field name="MONTANT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MONTANT"/>
+		<property name="com.jaspersoft.studio.field.label" value="MONTANT"/>
+	</field>
+	<field name="NUMERO_COMPTE_BANCAIRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NUMERO_COMPTE_BANCAIRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NUMERO_COMPTE_BANCAIRE"/>
+	</field>
+	<field name="PERIODICITE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PERIODICITE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PERIODICITE"/>
+	</field>
+	<field name="CD_ASSURE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CD_ASSURE"/>
+		<property name="com.jaspersoft.studio.field.label" value="CD_ASSURE"/>
+	</field>
+	<field name="EVENE_ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="EVENE_ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="EVENE_ID"/>
+	</field>
+	<field name="ID_BENIFI" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="ID_BENIFI"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_BENIFI"/>
+	</field>
+	<field name="NOM_BENI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOM_BENI"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOM_BENI"/>
+	</field>
+	<field name="POURCENTAGE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="POURCENTAGE"/>
+		<property name="com.jaspersoft.studio.field.label" value="POURCENTAGE"/>
+	</field>
+	<field name="PRENOM_BENI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PRENOM_BENI"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRENOM_BENI"/>
+	</field>
+	<field name="CODE_CONTRAT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="CODE_CONTRAT"/>
+		<property name="com.jaspersoft.studio.field.label" value="CODE_CONTRAT"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="11" width="127" height="68" uuid="15fa46d0-5057-42b1-9577-d11c4f93c3c5"/>
+				<imageExpression><![CDATA["C:\\Users\\memam\\Desktop\\Ireport\\logo7.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="444" y="0" width="111" height="72" uuid="1d837235-51aa-4ba3-b5a6-4cec4255cc5c"/>
+				<imageExpression><![CDATA["C:\\Users\\memam\\Desktop\\Ireport\\Logo-credit-agricol-maroc.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="185" y="11" width="177" height="30" forecolor="#3333FF" uuid="985d89a5-8a23-4909-b695-e440d7e05135"/>
+				<textElement>
+					<font fontName="Georgia" size="20"/>
+				</textElement>
+				<text><![CDATA[Al Akhdar Retraite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="50" width="170" height="20" uuid="2284d97c-bf0a-4def-916e-78d868443953"/>
+				<textElement>
+					<font fontName="Georgia" size="15"/>
+				</textElement>
+				<text><![CDATA[Conditions Parituclieres]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="262" y="29" width="100" height="20" uuid="421db66f-0a85-4877-a95a-44d4f56b91b8"/>
+				<text><![CDATA[Date d'�cheance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="29" width="100" height="20" uuid="f9d03c4a-3e75-48a5-a639-c6d052a71f1a"/>
+				<text><![CDATA[Date Effet:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="0" width="100" height="20" uuid="a6e2f786-2bb7-450a-a5a9-a5484e4afcb8"/>
+				<text><![CDATA[Police numero :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="29" width="52" height="20" uuid="f0bda548-6183-4f71-a61e-3305743371d2"/>
+				<text><![CDATA[Duree:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="0" width="100" height="20" uuid="a07025ef-b3b2-4664-854f-d6c69607a8f0"/>
+				<text><![CDATA[Agence]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="121" y="0" width="100" height="20" uuid="f56ccad5-22df-4c46-8a00-545b897a08ff"/>
+				<textFieldExpression><![CDATA[$F{NUMERO_POLICE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="29" width="100" height="20" uuid="dc26f237-93f1-4cb4-909c-c29dc262fa2a"/>
+				<textFieldExpression><![CDATA[$F{DATE_CREATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="29" width="56" height="20" uuid="3a796385-87eb-4dfb-a999-77b5e588124b"/>
+				<textFieldExpression><![CDATA[$F{DATE_RESILIATION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="350" y="0" width="100" height="20" uuid="1502ca82-5fa9-4187-9e60-14964e5b006d"/>
+				<text><![CDATA[RABAT ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="29" width="55" height="20" uuid="c2b107ed-642b-495a-9035-47b89df6553b"/>
+				<text><![CDATA[364 mois]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="10" width="100" height="20" forecolor="#666600" uuid="773f6175-b852-48ff-858c-fe6155b3bdb2"/>
+				<textElement>
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<text><![CDATA[Identificateur:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="fc9522f8-dd95-4649-9d30-1718446c630d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="480" splitType="Stretch">
+			<staticText>
+				<reportElement x="121" y="60" width="16" height="20" uuid="3f1d37ce-1f3f-42f0-8ffd-b6f5d07a10f6"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="60" width="111" height="20" uuid="7a07353c-f298-4cec-833b-abfadc026c1a"/>
+				<text><![CDATA[Date naissance Assure]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="240" width="16" height="20" uuid="fb52f898-cfe6-4b9a-8f3e-8dc1bb55f952"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="180" width="16" height="20" uuid="5f6ba2e1-3502-4696-b506-1e488822c827"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="80" width="111" height="20" uuid="2ad9904b-dd82-4ddc-baca-d9773040cdcd"/>
+				<text><![CDATA[Adresse de Assure]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="20" width="16" height="20" uuid="aaf3fa15-15e3-4061-a4d0-b0c44ebfc8f0"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="220" width="111" height="20" uuid="8c71b7a3-790e-46fc-8b5c-b8e5816ae887"/>
+				<text><![CDATA[N� Client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="160" width="16" height="20" uuid="a5f79038-0c04-444d-8b6b-e0f7ef8e02e7"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="220" width="16" height="20" uuid="65743084-fa88-46b5-859b-3f2ff3404b08"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="200" width="16" height="20" uuid="67fe29b2-814f-454d-9db2-4272b6ab4c4b"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="120" width="16" height="20" uuid="ee822120-22d6-4a5d-bd1d-1179e6952742"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="140" width="111" height="20" uuid="736c4062-3ac0-44fe-9221-28a249d283a5"/>
+				<text><![CDATA[Sexe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="140" width="16" height="20" uuid="f6385891-3a59-4fe6-b91f-eec31c2d31c1"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="100" width="111" height="20" uuid="d1b32da6-2d18-45e7-9c7b-c110fec76dd1"/>
+				<text><![CDATA[Profession de Assure]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="120" width="111" height="20" uuid="119e795f-4bcf-4de5-9684-eaa7e486d3a3"/>
+				<text><![CDATA[Situation Familiale ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="240" width="111" height="20" uuid="f81d357b-cf49-4dac-ad91-f8bf11f411f1"/>
+				<text><![CDATA[Titulaire Compte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="100" width="16" height="20" uuid="131e5d32-d1a1-41e1-a4c1-0ffa8c661dbb"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="80" width="16" height="20" uuid="d8302d57-1df4-44d7-9eb6-3f8454b7a479"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="40" width="16" height="20" uuid="e8677331-9006-4fb9-a399-5f0c2b22e484"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="40" width="111" height="20" uuid="068d168a-b7ff-4379-929e-cf1ab4be89a3"/>
+				<text><![CDATA[Nom_Complet  Assure]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="200" width="111" height="20" uuid="71152a21-423b-40df-af82-f912e3fe270c"/>
+				<text><![CDATA[N� Compte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="180" width="111" height="20" uuid="807a2b58-2d48-427c-9d67-4e1a9a14fdbb"/>
+				<text><![CDATA[N� Tele]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="160" width="111" height="20" uuid="8090f5a4-79e8-4fb3-9700-a4fe4440128f"/>
+				<text><![CDATA[N� CIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="20" width="111" height="20" uuid="e5b36260-0965-4148-a85e-729092ae4400"/>
+				<text><![CDATA[Souscripteur ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="97ddfd04-978d-4ec3-9ef5-dc1cc0e5078d"/>
+			</line>
+			<line>
+				<reportElement x="0" y="270" width="555" height="1" uuid="3ca20b91-8358-489c-a6e5-d4f63aeaaaeb"/>
+			</line>
+			<staticText>
+				<reportElement x="21" y="272" width="100" height="20" forecolor="#666600" uuid="f1927ff9-893b-4df7-ab43-b9db14840966"/>
+				<textElement>
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<text><![CDATA[Cotisation]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="292" width="555" height="1" uuid="fa075b82-2472-459c-9e06-48a1ffbac2ca"/>
+			</line>
+			<staticText>
+				<reportElement x="137" y="363" width="16" height="20" uuid="af8eeada-d80d-49d5-acf4-f2cbcc5ce18e"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="383" width="127" height="20" uuid="766ebb60-85ec-4618-9efb-384d61550eb9"/>
+				<text><![CDATA[Cotisation annuel minimal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="363" width="127" height="20" uuid="6261e626-8a8e-4101-a5c7-f21848f9fbdf"/>
+				<text><![CDATA[Taux d'interet technique]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="323" width="127" height="20" uuid="a1197a62-3f77-44e6-b4fa-1aab68a47d82"/>
+				<text><![CDATA[Montant en Chifree]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="303" width="16" height="20" uuid="07687688-b7af-4945-83fd-1a52039b87c2"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="383" width="16" height="20" uuid="4b84d2be-9ba4-4c76-8aba-2af983f25208"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="343" width="127" height="20" uuid="d91819a5-bd74-4872-9b85-1181b941823e"/>
+				<text><![CDATA[Taux de la cotisation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="323" width="16" height="20" uuid="2dea5488-0504-4fcb-9ac6-6c8c0cea64f4"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="343" width="16" height="20" uuid="99ec712f-87ab-4466-bbdf-b86dc0d77e3f"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="303" width="127" height="20" uuid="b57d69e1-0486-40f6-8171-1ad6fb009e1f"/>
+				<text><![CDATA[Paiment de la cotisation]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="173" y="20" width="100" height="20" uuid="14d8c3ef-47e8-4056-a932-741e66ce2a42"/>
+				<textFieldExpression><![CDATA[$F{NOM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="40" width="100" height="20" uuid="a9dea6ba-03ca-4e97-b99d-32b24bee25d1"/>
+				<textFieldExpression><![CDATA[$F{NOM_COMPLET_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="60" width="100" height="20" uuid="7356b8ed-cc3c-4f67-8bbe-441c6ab2bb4a"/>
+				<textFieldExpression><![CDATA[$F{DATE_NAISSANCE_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="80" width="100" height="20" uuid="3df02572-1065-456d-a818-d4993016f093"/>
+				<textFieldExpression><![CDATA[$F{ADRESSE_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="100" width="100" height="20" uuid="61a751ee-6d72-41ed-9cde-dc795f5821fa"/>
+				<textFieldExpression><![CDATA[$F{PROFESSION_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="120" width="100" height="20" uuid="7428f479-9797-415f-a8aa-1a66858c7732"/>
+				<textFieldExpression><![CDATA[$F{SITUATION_FAMILIALE_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="140" width="100" height="20" uuid="9f422583-76ac-48f5-a222-03971802bfa8"/>
+				<textFieldExpression><![CDATA[$F{SEXE_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="200" width="100" height="20" uuid="9627ca8d-2486-49de-bb1b-ddb000bade4f"/>
+				<textFieldExpression><![CDATA[$F{NUMERO_COMPTE_BANCAIRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="180" width="100" height="20" uuid="298a4c95-26ef-4a90-8e6c-68a3c2cd8452"/>
+				<textFieldExpression><![CDATA[$F{TELEPHONE_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="160" width="100" height="20" uuid="e9a18fa2-34d6-4f02-ad6c-06561a31acc3"/>
+				<textFieldExpression><![CDATA[$F{REFERENCE_PIECE_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="323" width="100" height="20" uuid="6c83a017-1c2d-45c3-9da4-cd951d2ec6f7"/>
+				<textFieldExpression><![CDATA[$F{MONTANT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="303" width="100" height="20" uuid="8e816da6-e680-4e80-b3e2-c770883a1f8e"/>
+				<textFieldExpression><![CDATA[$F{PERIODICITE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="220" width="100" height="20" uuid="3ce904f4-f5a8-4ef7-9783-2c1938f15205"/>
+				<textFieldExpression><![CDATA[$F{CODE_CLIENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="240" width="100" height="20" uuid="284d1981-40d9-4277-a9b7-71b14560dd0c"/>
+				<textFieldExpression><![CDATA[$F{NOM}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="410" width="555" height="1" uuid="34be0cc0-0fc0-4a5e-8040-f936d71d8292"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="420" width="216" height="20" forecolor="#666600" uuid="29af2519-0898-4df5-9141-26eedf0a3a9e"/>
+				<textElement>
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<text><![CDATA[Béneficiaire en cas de décés]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="440" width="555" height="1" uuid="3e7a363c-ce37-4762-bb31-aa0913664692"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="40" y="450" width="100" height="30" uuid="4e0228ea-18e2-4d9e-b976-8af42ab8e2d6"/>
+				<textFieldExpression><![CDATA[$F{PRENOM_BENI}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="151" y="450" width="34" height="30" uuid="9a8e41df-e62f-48f7-83b1-053f88fa683f"/>
+				<textFieldExpression><![CDATA[$F{POURCENTAGE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="170" y="388" width="100" height="20" uuid="f37a59cc-fbd3-429a-bcb9-8a30f76c1fd7"/>
+				<text><![CDATA[24 000 DHS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="368" width="97" height="20" uuid="dc44a80f-8d07-410a-8bf4-6b8b8d02c5cf"/>
+				<text><![CDATA[2.2%]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="380" y="25" width="70" height="20" uuid="f11de531-2da2-49ec-94da-4aa1559bfa22"/>
+				<text><![CDATA[Fait à :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="490" y="25" width="70" height="20" uuid="eaa1513d-c9ce-41d6-9efa-03e30082ee38"/>
+				<text><![CDATA[Le :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="0" width="357" height="54" uuid="41a318b1-7e96-4e73-acac-2411369b457e"/>
+				<text><![CDATA[Je déclare actuellement en bonne santé , ne pas etre atteint d'une infirmité ou d'une maladie grave ou devoir subir un traitement medicale ou une intervention chirugicale , je donne mon accord sur la clause d'arbitrage et autorise le Credit Agricole du Maroc à opérer annuellement sur mon compte au profit de la MCMA , les prélevements ci dessus , ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="-1" width="555" height="1" uuid="939ac0a1-c0dd-4117-a1f9-014f6d9ba821"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="345" y="9" width="210" height="37" uuid="f9ddb9a6-f41b-40c9-8f4a-fa6cd7c1b54a"/>
+				<text><![CDATA[Signature du suscripteur , faire précéder de la signature de la mentio, " Lu et approuvé "]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="10" width="100" height="30" uuid="69635a99-77c9-4e73-b5c4-2673b5f0099b"/>
+				<text><![CDATA[Cachet et signature de l'intermédiaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="12" width="100" height="30" uuid="ae02dc39-a128-47e2-a96e-76e306db2446"/>
+				<text><![CDATA[Cachet et signature de la Mutuelle]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

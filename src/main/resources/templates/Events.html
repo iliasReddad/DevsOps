@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8" />
+<title>Insert title here</title>
+<style>
+div {
+	margin-top: 10px;
+}
+
+body {
+	font-family: 'BlinkMacSystemFont';
+}
+</style>
+</head>
+<body>
+
+	<div layout:fragment="content1">
+		<div class="row">
+
+
+			<div th:if="${evts}" style="margin-top: 2%"
+				class="card  text-center col-md-12">
+				<div
+					th:text=" 'Liste des evénements pour contrat N° = '+ ${numPolice} "
+					class=" card-header"></div>
+
+
+				<div th:if="${evts}" class="card card_body">
+					<table class="table table-striped">
+						<tr>
+							<th>nomEvenement</th>
+							<th>statut</th>
+							<th>Cotisation</th>
+							<th>Date Evenement</th>
+
+
+						</tr>
+						<tr th:each="objet:${evts}">
+							<td th:text="${objet.nomEvenement}"></td>
+							<td th:text="${objet.statut}"></td>
+							<td th:text="${objet.montant}"></td>
+							<td th:text="${objet.dateEvenement}"></td>
+
+
+						</tr>
+
+
+
+					</table>
+
+
+
+
+				</div>
+			</div>
+		</div>
+		
+		<div  th:if="${beni == null  and evts ==null}" style="margin-top: 2%" class="card  text-center col-md-12">
+			<div class=" card-header">Liste des Benificiare</div>
+			<div class="card card_body">
+				<p> Pas de Béneficiare </p>
+			</div>
+		</div>
+
+
+
+		<div th:if="${beni}" style="margin-top: 2%"
+			class="card  text-center col-md-12">
+			<div class=" card-header">Liste des Benificiare</div>
+
+
+			<div class="card card_body">
+				<table class="table table-striped">
+					<tr>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>pourcentage</th>
+
+
+					</tr>
+					<tr th:each="objet:${beni}">
+						<td th:text="${objet.nom_beni}"></td>
+						<td th:text="${objet.prenom_beni}"></td>
+						<td th:text="${objet.pourcentage}"></td>
+					</tr>
+
+
+
+				</table>
+
+
+
+
+			</div>
+		</div>
+
+
+					<a th:href="@{/test2(id=${codeAss})}"><button style="font-size:24px ; margin-top: 10px ; margin-left:42%">Assure <i class="fa fa-hand-o-left"></i></button></a>
+
+
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8" />
+<title>Insert title here</title>
+<style>
+  div {margin-top:10px;}
+body {
+font-family: 'BlinkMacSystemFont';
+}</style>
+</head>
+<body>
+
+	<div layout:fragment="content1">
+		<div class="row">
+
+			<div style="margin-left: 0%; margin-top: 2%" class="card col-md-12"
+				th:if="${compte}">
+				<div class="card-header">Informations sur le compte</div>
+				<div class="card-body">
+					<div class="form-control">
+						<label style="color: blue">Numero de compte :</label> <label
+							th:text="${compte.numCompte}"></label> <label> </label> <label>
+						</label> <label style="color: blue">Nom Agence :</label> <label
+							th:text="${compte.client.agence}"></label>
+					</div>
+
+					<div class="form-control">
+						<label style="color: blue">nom du client :</label> <label
+							th:text="${compte.client.nom}"></label>
+					</div>
+					<div class="form-control">
+
+						<label style="color: blue"> RIB : </label> <label
+							th:text="${compte.RIB}"></label>
+					</div>
+					<div class="form-control">
+						<label style="color: blue"> solde : </label> <label
+							th:text="${compte.solde}"></label>
+					</div>
+					<div class="form-control">
+
+						<label style="color: blue"> Date Creation: </label> <label
+							th:text="${compte.dateOuverture}"></label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="card col-md-8" th:if="${exeption}">
+				<div style="background-color: red" class="card-header">Erreure</div>
+				<div class="card-body">
+					<label th:if="${exeption.message}=='compte Introuvable' "
+						th:text="${exeption.message}"></label>
+					<div th:if="${exeption.message}=='assr Introuvable'">
+						<label style="margin-left: 40%">assure non encore creer</label>
+						<br>
+						<p>						
+							<a href="saveData">Etablir la fiche signalétique</a>
+						</p>
+
+
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+
+
+
+
+
+			<div  style="margin-top: 2%" class="card  text-center col-md-12" th:if="${compte!=null and assure!=null}"   >
+				<div class=" card-header">Liste des Assures </div>
+				<!-- <div class="panel panel-body" th:if="${assure == null}">
+					<label th:text="pas de fiche signalitique"></label>
+				</div> -->
+
+
+				<div class="card card_body" >
+					<table class="table table-striped">
+						<tr>
+							<th>Contrat</th>
+							<th>NV Contrat</th>
+							<th id="codeAssure"  >codeAssure</th>
+							<th>nomComplet</th>
+							<th>NaturePiece</th>
+							<th>ReferencePiece</th>
+							<th>DateNaissance</th>
+						</tr>
+						<tr th:each="objet:${assure}">
+						
+							<td> <a th:href="@{/test2(id=${objet.codeAssure})}"><i class="fas fa-file"></i></a> </td> 
+							<td> <a th:href="@{/test3(id=${objet.codeAssure})}"><i class="fas fa-file"></i></a> </td> 
+							<td  th:text="${objet.codeAssure}"></td>
+							<td th:text="${objet.nomComplet_a}"></td>
+							<td th:text="${objet.NaturePiece_a}"></td>
+							<td th:text="${objet.ReferencePiece_a}"></td>
+							<td th:text="${objet.DateNaissance_a}"></td>
+
+						</tr>
+
+
+
+					</table>
+
+
+
+
+				</div>
+			</div>
+
+
+
+
+
+		</div>
+
+	</div>
+
+</body>
+</html>
