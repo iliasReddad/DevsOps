@@ -3,10 +3,10 @@
 
 # *Project About:*
 
- CRUD web application with Spring Boot and Thymeleaf with a oracle connection .
- full implementation on how to use Thymeleaf with Spring 
- Use of  Jasper report 
- custom whitelabel error page
+* CRUD web application with Spring Boot and Thymeleaf with a oracle connection .
+* full implementation on how to use Thymeleaf with Spring 
+* Use of  Jasper report 
+* custom whitelabel error page
  
 
 # *Project Screenshoot:*
