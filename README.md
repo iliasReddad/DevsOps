@@ -1,6 +1,14 @@
 ## DevsOps
 # Spring boot +  Thymeleaf Web Application 
 
+# *Project About:*
+
+ CRUD web application with Spring Boot and Thymeleaf with a oracle connection .
+ full implementation on how to use Thymeleaf with Spring 
+ Use of  Jasper report 
+ custom whitelabel error page
+ 
+
 # *Project Screenshoot:*
 
 ![image](https://user-images.githubusercontent.com/79853388/132102658-ce0dd1fb-2dc5-4738-953c-04df80ca1e97.png)
