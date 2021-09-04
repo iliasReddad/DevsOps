@@ -7,8 +7,8 @@ Project about:
 
 Technology stack:
 
-Spring Boot
-Spring MVC
+. Spring Boot
+. Spring MVC
 Spring Data JPA
 MySQL
 Spring Security
