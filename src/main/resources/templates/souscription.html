@@ -5,11 +5,6 @@
 <head>
 <meta charset="utf-8" />
 <title>Insert title here</title>
-<style>
-  div {margin-top:10px;}
-body {
-font-family: 'BlinkMacSystemFont';
-}</style>
 </head>
 <body>
 
@@ -49,7 +44,40 @@ font-family: 'BlinkMacSystemFont';
 			</div>
 
 		</div>
-		<div class="row">
+		
+		
+		<!-- Modal HTML -->
+		<div id="myModal" class="modal fade" th:if="${exeption}">
+			<div class="modal-dialog modal-confirm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="icon-box">
+							<i class="material-icons">&#xE5CD;</i>
+						</div>
+						<h4 style="margin-top: 10px" class="modal-title w-100">Error !</h4>
+					</div>
+					<div class="modal-body wrapper ">
+                        <h4 class="typing-demo"  th:if="${exeption.message}=='compte Introuvable' "
+							th:text="${exeption.message}"></h4>
+							<div  style="align-items: center;" th:if="${exeption.message}=='assr Introuvable'">
+							<a href="saveData"  > <h4 class="typing-demo" > Etablir la fiche signalétique </h4> </a>
+						</div>
+							
+						<div class="modal-footer">
+							<button class="btn btn-danger btn-block" data-dismiss="modal">OK</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<script type="text/javascript" th:if="${exeption}">
+				$(window).on('load', function() {
+					$('#myModal').modal('show');
+				});
+			</script>
+		
+		<!-- <div class="row">
 			<div class="card col-md-8" th:if="${exeption}">
 				<div style="background-color: red" class="card-header">Erreure</div>
 				<div class="card-body">
@@ -69,20 +97,16 @@ font-family: 'BlinkMacSystemFont';
 				</div>
 			</div>
 
-		</div>
+		</div> -->
 		<div class="row">
-
-
 
 
 
 			<div  style="margin-top: 2%" class="card  text-center col-md-12" th:if="${compte!=null and assure!=null}"   >
 				<div class=" card-header">Liste des Assures </div>
-				<!-- <div class="panel panel-body" th:if="${assure == null}">
+				<div class="panel panel-body" th:if="${assure == null}">
 					<label th:text="pas de fiche signalitique"></label>
-				</div> -->
-
-
+				</div>
 				<div class="card card_body" >
 					<table class="table table-striped">
 						<tr>

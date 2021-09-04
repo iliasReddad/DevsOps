@@ -5,14 +5,6 @@
 <head>
 <meta charset="utf-8" />
 <title>Home</title>
-<style>
-  div {margin-top:10px;}
-body {
-font-family: 'BlinkMacSystemFont';
-
-}
-
-</style>
 </head>
 <body>
 
@@ -20,8 +12,8 @@ font-family: 'BlinkMacSystemFont';
 		<div class="row">
 
 			<div style="margin-top: 2%" class="card panel-primary col-md-5">
-				<div >
-					<div >
+				<div>
+					<div>
 						<div class="card-header">Consultations compte</div>
 
 						<div class="card-body">
@@ -33,7 +25,8 @@ font-family: 'BlinkMacSystemFont';
 									<label> N° cpte : </label> <input type="text" name="codeCompte"
 										th:value="${codeCompte}" />
 								</div>
-								<button  type="submit" class="btn-outline-primary btn-block ">chercher</button>
+								<button type="submit" class="btn-outline-primary btn-block  "
+									id="myBtn">chercher</button>
 							</form>
 						</div>
 						<div class="card-footer text-muted"></div>
@@ -77,73 +70,101 @@ font-family: 'BlinkMacSystemFont';
 			</div>
 
 		</div>
-		<div class="row">
-			<div class="card col-md-8" th:if="${exeption}">
-				<div style="background-color: red" class="card-header">Erreure</div>
-				<div class="card-body">
-					<label th:if="${exeption.message}=='compte Introuvable' "
-						th:text="${exeption.message}"></label>
-					<div th:if="${exeption.message}=='assr Introuvable'">
-						<label style="margin-left: 40%">assure non encore creer</label>
-						<br>
-						<p>						
-							<a href="saveData">Etablir la fiche signalétique</a>
-					
-    
-</div>
+		<!-- Modal HTML -->
+		<div id="myModal" class="modal fade" th:if="${exeption}">
+			<div class="modal-dialog modal-confirm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="icon-box">
+							<i class="material-icons">&#xE5CD;</i>
+						</div>
+						<h4 style="margin-top: 10px" class="modal-title w-100">Error !</h4>
+					</div>
+					<div class="modal-body wrapper ">
+                        <h4 class="typing-demo"  th:if="${exeption.message}=='compte Introuvable' "
+							th:text="${exeption.message}"></h4>
+							<div  style="align-items: center;" th:if="${exeption.message}=='assr Introuvable'">
+							<a href="saveData"  > <h4 class="typing-demo" > Etablir la fiche signalétique </h4> </a>
+						</div>
+							
+						<div class="modal-footer">
+							<button class="btn btn-danger btn-block" data-dismiss="modal">OK</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<script type="text/javascript" th:if="${exeption}">
+				$(window).on('load', function() {
+					$('#myModal').modal('show');
+				});
+			</script>
+			
+			
+			<!-- <div class="row">
+				<div class="card col-md-8" th:if="${exeption}">
+					<div style="background-color: red" class="card-header">Erreure</div>
+					<div class="card-body">
+						<label th:if="${exeption.message}=='compte Introuvable' "
+							th:text="${exeption.message}"></label>
+						<div th:if="${exeption.message}=='assr Introuvable'">
+							<label style="margin-left: 40%">assure non encore creer</label> <br>
+							<p>
+								<a href="saveData">Etablir la fiche signalétique</a>
+						</div>
 
 
 					</div>
 
 
 				</div>
-			</div>
-		<div class="row">
-			<div  style="margin-top: 2%" class="card  text-center col-md-12" th:if="${compte!=null and assure!=null}"   >
-				<div class=" card-header">  Fiche Signalétique
-							<a href="saveData"><i class="fas fa-file"></i></a>
-				
-				</div>
-				<!-- <div class="panel panel-body" th:if="${assure == null}">
+			</div> -->
+			<div class="row">
+				<div style="margin-top: 2%" class="card  text-center col-md-12"
+					th:if="${compte!=null and assure!=null}">
+					<div class=" card-header">
+						Fiche Signalétique <a href="saveData"><i class="fas fa-file"></i></a>
+
+					</div>
+					<!-- <div class="panel panel-body" th:if="${assure == null}">
 					<label th:text="pas de fiche signalitique"></label>
 				</div> -->
 
 
-				<div class="card card_body" >
-					<table class="table table-striped">
-						<tr>
-							<th>codeAssure</th>
-							<th>nomComplet</th>
-							<th>NaturePiece</th>
-							<th>ReferencePiece</th>
-							<th>DateNaissance</th>
-						</tr>
-						<tr th:each="objet:${assure}">
-							<td th:text="${objet.codeAssure}"></td>
-							<td th:text="${objet.nomComplet_a}"></td>
-							<td th:text="${objet.NaturePiece_a}"></td>
-							<td th:text="${objet.ReferencePiece_a}"></td>
-							<td th:text="${objet.DateNaissance_a}"></td>
+					<div class="card card_body">
+						<table class="table table-striped">
+							<tr>
+								<th>codeAssure</th>
+								<th>nomComplet</th>
+								<th>NaturePiece</th>
+								<th>ReferencePiece</th>
+								<th>DateNaissance</th>
+							</tr>
+							<tr th:each="objet:${assure}">
+								<td th:text="${objet.codeAssure}"></td>
+								<td th:text="${objet.nomComplet_a}"></td>
+								<td th:text="${objet.NaturePiece_a}"></td>
+								<td th:text="${objet.ReferencePiece_a}"></td>
+								<td th:text="${objet.DateNaissance_a}"></td>
 
-						</tr>
-
-
-
-					</table>
+							</tr>
 
 
 
+						</table>
 
+
+
+
+					</div>
 				</div>
+
+
+
+
+
 			</div>
-
-
-
-
-
 		</div>
-		</div>
-
-
 </body>
 </html>

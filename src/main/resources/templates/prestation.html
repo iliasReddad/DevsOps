@@ -111,6 +111,81 @@ body {
 	flex: 2;
 	height: 35px;
 }
+.modal-confirmSucc {		
+	color: #636363;
+	width: 325px;
+	font-size: 14px;
+}
+.modal-confirmSucc .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+}
+.modal-confirmSucc .modal-header {
+	border-bottom: none;   
+	position: relative;
+}
+.modal-confirmSucc h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -15px;
+}
+.modal-confirmSucc .form-control, .modal-confirm .btn {
+	min-height: 40px;
+	border-radius: 3px; 
+}
+.modal-confirmSucc .close {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}	
+.modal-confirmSucc .modal-footer {
+	border: none;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 13px;
+}	
+.modal-confirmSucc .icon-box {
+	color: #fff;		
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: -70px;
+	width: 95px;
+	height: 95px;
+	border-radius: 50%;
+	z-index: 9;
+	background: #82ce34;
+	padding: 15px;
+	text-align: center;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.modal-confirmSucc .icon-box i {
+	font-size: 58px;
+	position: relative;
+	top: 3px;
+}
+.modal-confirmSucc.modal-dialog {
+	margin-top: 80px;
+}
+.modal-confirmSucc .btn {
+	color: #fff;
+	border-radius: 4px;
+	background: #82ce34;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	border: none;
+}
+.modal-confirmSucc .btn:hover, .modal-confirmSucc .btn:focus {
+	background: #6fb32b;
+	outline: none;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
 </style>
 </head>
 <body onload="getType()">
@@ -192,23 +267,83 @@ body {
 			</div>
 		</div>
 
-		<div class="row">
+
+
+
+<!-- Modal HTML -->
+<div id="myModalSucc" class="modal fade">
+	<div class="modal-dialog modal-confirmSucc">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE876;</i>
+				</div>				
+				<h4 class="modal-title w-100">Awesome!</h4>	
+			</div>
+			<div class="modal-body">
+				<p class="text-center"> Prestation  confirmer </p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>     
+
+
+<script type="text/javascript" th:if="${succes}">
+				$(window).on('load', function() {
+					$('#myModalSucc').modal('show');
+				});
+			</script>
+		
+
+		<!-- <div class="row">
 			<div class="card col-md-8" th:if="${succes}">
 				<div style="background-color: green" class="card-header">Sucess</div>
 				<div class="card-body">
 					<label> Prestation Ajouter avec succes</label>
 				</div>
 			</div>
-					</div>
+					</div> -->
 					
-					<div class="row">
-			<div class="card col-md-8" th:if="${error}">
-				<div style="background-color: red" class="card-header">Error</div>
-				<div class="card-body">
-					<label> Prestation deja Ajouter </label>
+				
+						
+					
+					<!-- Modal HTML -->
+		<div id="myModal" class="modal fade" th:if="${error}">
+			<div class="modal-dialog modal-confirm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="icon-box">
+							<i class="material-icons">&#xE5CD;</i>
+						</div>
+						<h4 style="margin-top: 10px" class="modal-title w-100">Error !</h4>
+					</div>
+					<div class="modal-body wrapper ">
+							<div  style="align-items: center;" >
+							 <h4 class="typing-demo" > Prestation deja Ajouter </h4> 
+						</div>
+							
+						<div class="modal-footer">
+							<button class="btn btn-danger btn-block" data-dismiss="modal">OK</button>
+						</div>
+					</div>
 				</div>
 			</div>
-					</div>
+			</div>
+			
+			<script type="text/javascript" th:if="${error}">
+				$(window).on('load', function() {
+					$('#myModal').modal('show');
+				});
+			</script>
+		
+					
+					
+					
+					
+					
 
 
 			<div class="row">
