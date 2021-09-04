@@ -29,13 +29,6 @@ import com.example.demo.repository.EvenementRepository;
 import com.example.demo.repository.PrestationRepository;
 import com.example.demo.services.BanqueMetierImple;
 
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-
 @org.springframework.stereotype.Controller
 public class Controller {
 	@Autowired
@@ -118,36 +111,35 @@ public class Controller {
 		return "prestation";
 	}
 
-	@RequestMapping("/printfpdf")
-	public String index9(Model model, String id, String id2) throws SQLException {
-
-		String path = "E:\\Telechargement";
-		File file;
-		try {
-
-			file = ResourceUtils.getFile("classpath:report18.jrxml");
-			DriverManagerDataSource dataSource = new DriverManagerDataSource();
-			dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-			dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-			dataSource.setUsername("SYSTEM");
-			dataSource.setPassword("0000");
-			Connection connection = dataSource.getConnection();
-			Map<String, Object> parameters = new HashMap<>();
-			parameters.put("id", id);
-
-			JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,
-					connection);
-			JasperExportManager.exportReportToPdfFile(jasperPrint,
-					path + "\\ficheContrat" + id + "Assure N°" + id2 + ".pdf");
-		} catch (FileNotFoundException | JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return "redirect:/test2?id=" + id2;
-
-	}
+	/*
+	 * @RequestMapping("/printfpdf")
+	 * 
+	 * public String index9(Model model, String id, String id2) throws SQLException
+	 * {
+	 * 
+	 * String path = "E:\\Telechargement"; File file; try {
+	 * 
+	 * file = ResourceUtils.getFile("classpath:report18.jrxml");
+	 * DriverManagerDataSource dataSource = new DriverManagerDataSource();
+	 * dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+	 * dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+	 * dataSource.setUsername("SYSTEM"); dataSource.setPassword("0000"); Connection
+	 * connection = dataSource.getConnection(); Map<String, Object> parameters = new
+	 * HashMap<>(); parameters.put("id", id);
+	 * 
+	 * JasperReport jasperReport =
+	 * JasperCompileManager.compileReport(file.getAbsolutePath()); JasperPrint
+	 * jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,
+	 * connection); JasperExportManager.exportReportToPdfFile(jasperPrint, path +
+	 * "\\ficheContrat" + id + "Assure N°" + id2 + ".pdf"); } catch
+	 * (FileNotFoundException | JRException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); }
+	 * 
+	 * return "redirect:/test2?id=" + id2;
+	 * 
+	 * 
+	 * }
+	 */
 
 	@RequestMapping("/test2")
 	public String index5(Model model, String id) {
