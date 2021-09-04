@@ -36,9 +36,9 @@ Configure database according to application.properties file, or update this file
 # *Running the project*
 The application uses Spring Boot, so it is easy to run. You can start it any of a few ways:
 
-# *Run the main method from SpringThymleafJpaApplication:*
+*Run the main method from SpringThymleafJpaApplication
 
-Use the Maven Spring Boot plugin: mvn spring-boot:run
+*Use the Maven Spring Boot plugin: mvn spring-boot:run
 
 # *Viewing the running application*
 To view the running application, visit http://localhost:8080 in your browser
