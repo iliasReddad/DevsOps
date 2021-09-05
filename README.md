@@ -11,7 +11,6 @@
 
 # *Project Screenshoot:*
 
-![image](https://user-images.githubusercontent.com/79853388/132102658-ce0dd1fb-2dc5-4738-953c-04df80ca1e97.png)
 ![image](https://user-images.githubusercontent.com/79853388/132102681-79a0d292-d79f-440b-8550-5a4417b59f50.png)
 ![image](https://user-images.githubusercontent.com/79853388/132102704-9e078d2d-b370-40f8-a591-87fe0bf2df3b.png)
 ![image](https://user-images.githubusercontent.com/79853388/132102734-1eead6fc-6c14-4e6d-baa9-c3bb3bd0db69.png)
